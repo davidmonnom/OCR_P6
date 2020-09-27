@@ -1,7 +1,6 @@
-home:
+Home:
     path: /
     controller: App\Controller\HomeController::index
-
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+TrickIndex:
+    path: /tricks
+    controller:  App\Controller\TrickIndexController::list
