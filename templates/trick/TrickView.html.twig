@@ -1,10 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title "Snowtricks - Trick" %}
+{% block title trick.name %}
 
 {% block body %}
-<div class="container">
+<div class="container mt-4">
 	<h1>{{ trick.name }}</h1>  
-	</p>Lorem
+	<div class="row">
+		<div class="col-lg-6">
+			{% for image in trick.picture %}
+			fezzef
+				<img src="{{image}}"></img>
+
+			{% endfor %}
+		</div>
+		<div class="col-lg-6">
+			<h3>Commentaires :</h3>
+			{% for item in comment %}
+
+				
+				<p>{{ item.description }}</p>
+
+			{% endfor %}
+		</div>
+	</div>
 </div>
 {% endblock %}

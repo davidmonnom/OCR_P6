@@ -15,7 +15,7 @@ class HomeController extends AbstractController{
 		dump($tricks);
 		return $this->render("pages/home.html.twig", [
 			'menu_active' => 'home',
-			'tricks' => $tricks
+			'tricks' => $tricks,
 		]);
 	}
 	

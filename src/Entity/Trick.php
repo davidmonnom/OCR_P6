@@ -11,6 +11,12 @@ use  Cocur\Slugify\Slugify;
  */
 class Trick
 {
+    public const groups = [
+        1 => "grabs",
+        2 => "rotation",
+        3 => "flips"
+    ];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -88,7 +94,7 @@ class Trick
 
     public function getTrickgroup(): ?string
     {
-        return $this->trickgroup;
+        return self::groups[$this->trickgroup];
     }
 
     public function setTrickgroup(?string $trickgroup): self
