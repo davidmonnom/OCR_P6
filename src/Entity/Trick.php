@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TrickRepository;
 use Doctrine\ORM\Mapping as ORM;
+use  Cocur\Slugify\Slugify;
 
 /**
  * @ORM\Entity(repositoryClass=TrickRepository::class)
@@ -42,6 +43,15 @@ class Trick
      */
     private $video;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $creation_date;
+
+    public function __construct(){
+        $this->creation_date = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -50,6 +60,11 @@ class Trick
     public function getName(): ?string
     {
         return $this->name;
+    }
+    
+    public function getSlug(): ?string
+    {
+        return $slugify = (new Slugify())->slugify($this->name);
     }
 
     public function setName(string $name): self
@@ -103,6 +118,18 @@ class Trick
     public function setVideo($video): self
     {
         $this->video = $video;
+
+        return $this;
+    }
+
+    public function getCreationDate(): ?\DateTimeInterface
+    {
+        return $this->creation_date;
+    }
+
+    public function setCreationDate(\DateTimeInterface $creation_date): self
+    {
+        $this->creation_date = $creation_date;
 
         return $this;
     }

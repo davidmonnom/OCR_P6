@@ -1,6 +1,17 @@
 Home:
     path: /
     controller: App\Controller\HomeController::index
+
 TrickIndex:
     path: /tricks
-    controller:  App\Controller\TrickIndexController::list
+    controller:  App\Controller\TrickController::list
+
+TrickCreate:
+    path: /trick-create
+    controller:  App\Controller\TrickController::create
+    
+TrickView:
+    path: /tricks/{slug}-{id}
+    controller:  App\Controller\TrickController::view
+    requirements: 
+        slug: "[a-z0-9-]*"

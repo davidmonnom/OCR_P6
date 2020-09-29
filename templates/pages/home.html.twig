@@ -5,8 +5,30 @@
 {% block body %}
 <div class="banner_img">
 </div>
-<div class="container"> 
+<div class="container">
 	<h1>Page d'accueil</h1>  
-	</p>Lorem
+	</p>Loremdcdss 
+</div>
+
+<div class="container">
+	<h2>Derniers Tricks</h2>
+	<div class="row flex">
+		{% for trick in tricks %}
+			<div class="col-4">
+				<div class="card-body">
+					<h5 class="card-title">
+						<a href="{{ path('TrickView', {id: trick.id, slug: trick.slug}) }}"> {{ trick.name }} </a>
+					</h5>
+					<em class="card-date">
+						{# {{ trick.getcreation_date() }} #}
+					</em>
+					<p class="card-text"> 
+						{{ trick.description }}
+					</p>
+					
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 </div>
 {% endblock %}
