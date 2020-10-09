@@ -15,12 +15,14 @@
 		</div>
 		<div class="col-lg-6">
 			<h3>Commentaires :</h3>
+			<div class="commentSection">
 			{% for item in comment %}
-
-				
+				<h4>{{ item.UserId }}</h4>
+				<em> {{ item.CreationDate|date("d/m/Y") }} </em>
 				<p>{{ item.description }}</p>
 
 			{% endfor %}
+			</div>
 		</div>
 	</div>
 </div>

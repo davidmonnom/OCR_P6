@@ -15,3 +15,19 @@ TrickView:
     controller:  App\Controller\TrickController::view
     requirements: 
         slug: "[a-z0-9-]*"
+
+AdminTrick:
+    path: /admin/
+    controller:  App\Controller\Admin\AdminTrickController::index
+
+AdminTrickNew:
+    path: /admin/new
+    controller:  App\Controller\Admin\AdminTrickController::new
+
+AdminTrickEdit:
+    path: /admin/trick/delete/{id}
+    controller:  App\Controller\Admin\AdminTrickController::edit
+
+AdminTrickDelete:
+    path: /admin/trick/edit/{id}
+    controller:  App\Controller\Admin\AdminTrickController::delete

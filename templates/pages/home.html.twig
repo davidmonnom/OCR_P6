@@ -17,10 +17,10 @@
 			<div class="col-4">
 				<div class="card-body">
 					<h5 class="card-title">
-						<a href="{{ path('TrickView', {id: trick.id, slug: trick.slug}) }}">{{ trick.trickgroup|capitalize }} - {{ trick.name }}</a>
+						<a href="{{ path('TrickView', {id: trick.id, slug: trick.slug}) }}">{{ trick.getTrickgroupType|capitalize }} - {{ trick.name }}</a>
 					</h5>
 					<em class="card-date">
-						{# {{ trick.getcreation_date() }} #}
+						{{ trick.CreationDate|date("d/m/Y") }}
 					</em>
 					<p class="card-text"> 
 						{{ trick.description }}

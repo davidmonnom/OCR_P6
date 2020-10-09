@@ -10,7 +10,6 @@ use Twig\Environment;
 class HomeController extends AbstractController{
 
 	public function index(TrickRepository $repository): Response{
-
 		$tricks = $repository->findLatest();
 		dump($tricks);
 		return $this->render("pages/home.html.twig", [

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Snowtricks - Accueil" %}
+
+{% block body %}
+<div class="banner_img">
+</div>
+<div class="container mt-4">
+	<h1>Editer le Trick</h1>  
+</div>
+
+<div class="container">
+		{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<button btn="btn btn-primary">Éditer</button>
+		{{ form_end(form) }}
+</div>
+{% endblock %}

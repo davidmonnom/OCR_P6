@@ -10,6 +10,7 @@ use App\Entity\Comment;
 use App\Repository\CommentRepository;
 
 class TrickController extends AbstractController{
+	
 	public function __construct(TrickRepository $trickRepo, CommentRepository $commentRepo){
         $this->trick = $trickRepo;
         $this->comment = $commentRepo;
@@ -54,8 +55,8 @@ class TrickController extends AbstractController{
 		]);
 	}
 	
-	public function comment($id){
-		return $this->comment->getByTrickId($id);
+	public function comment($trickId){
+		return $this->comment->getByTrickId($trickId);
 	}
 	
 }
