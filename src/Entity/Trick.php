@@ -4,10 +4,13 @@ namespace App\Entity;
 
 use App\Repository\TrickRepository;
 use Doctrine\ORM\Mapping as ORM;
-use  Cocur\Slugify\Slugify;
+use Cocur\Slugify\Slugify;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=TrickRepository::class)
+ * @UniqueEntity("name")
  */
 class Trick
 {
@@ -26,26 +29,29 @@ class Trick
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=5, max=150,)
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank
      */
     private $trickgroup;
 
     /**
-     * @ORM\Column(type="object", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $picture;
 
     /**
-     * @ORM\Column(type="object", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $video;
 
@@ -141,6 +147,18 @@ class Trick
     public function setCreationDate(\DateTimeInterface $creation_date): self
     {
         $this->creation_date = $creation_date;
+
+        return $this;
+    }
+
+    public function getVideonew(): ?string
+    {
+        return $this->videonew;
+    }
+
+    public function setVideonew(?string $videonew): self
+    {
+        $this->videonew = $videonew;
 
         return $this;
     }

@@ -6,7 +6,10 @@
 <div class="banner_img">
 </div>
 <div class="container mt-4">
-	<h1>Gérer les biens</h1>  
+	<h1 class="mb-4">Gérer les biens</h1>
+    {% for message in app.flashes('success') %}
+    <span class="mt-4 alert alert-success">{{ message }}</span>
+    {% endfor %}  
 </div>
 
 <div class="container">
@@ -21,7 +24,7 @@
                 <th>{{ trick.name }}</th>
                 <th class='text-right'>
                     <a class="btn btn-secondary" href="{{ path('AdminTrickEdit', {id: trick.id }) }}">Editer</a>
-                    <form action="{{ path('AdminTrickDelete', {id: trick.id }) }}" style="display: inline-block;">
+                    <form action="{{ path('AdminTrickDelete', {id: trick.id }) }}" style="display: inline-block;" onsubmit="return confirm('Êtes-vous sûr ?')">
                         <input type="hidden" name='csrf_token' value='{{ csrf_token('delete' ~ trick.id) }}'>
                         <button class="btn btn-danger">Supprimer</button>
                     </form>

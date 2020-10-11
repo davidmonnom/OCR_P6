@@ -46,6 +46,7 @@ class AdminTrickController extends AbstractController{
         if($form->isSubmitted() && $form->isValid()){
             $this->em->persist($trick);
             $this->em->flush();
+            $this->addFlash('success', 'Trick créé avec succès !');
             return $this->redirectToRoute('AdminTrick');
         }
 
@@ -66,6 +67,7 @@ class AdminTrickController extends AbstractController{
 
         if($form->isSubmitted() && $form->isValid()){
             $this->em->flush();
+            $this->addFlash('success', 'Trick modifié avec succès !');
             return $this->redirectToRoute('AdminTrick');
         }
 
@@ -84,6 +86,7 @@ class AdminTrickController extends AbstractController{
         if($this->isCsrfTokenValid('delete' . $trick->getId(), $request->get('csrf_token'))){
             $this->em->remove($trick);
             $this->em->flush();
+            $this->addFlash('success', 'Trick supprimé avec succès !');
             return $this->redirectToRoute('AdminTrick');
         }
         return $this->redirectToRoute('AdminTrick');

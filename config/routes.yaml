@@ -16,6 +16,10 @@ TrickView:
     requirements: 
         slug: "[a-z0-9-]*"
 
+Login:
+    path: /login/
+    controller: App\Controller\SecurityController::login
+
 AdminTrick:
     path: /admin/
     controller:  App\Controller\Admin\AdminTrickController::index
