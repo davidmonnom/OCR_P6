@@ -20,6 +20,9 @@ Login:
     path: /login/
     controller: App\Controller\SecurityController::login
 
+Logout:
+    path: /logout
+
 AdminTrick:
     path: /admin/
     controller:  App\Controller\Admin\AdminTrickController::index

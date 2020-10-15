@@ -25,7 +25,6 @@ class AdminTrickController extends AbstractController{
     public function index(){
 
         $tricks = $this->trickRepo->findAll();
-        // return $this->render('admin/trick/index.html.twig', compact('tricks'));
         return $this->render('admin/trick/index.html.twig', [
             'menu_active' => 'trickindex',
             'tricks' => $tricks,

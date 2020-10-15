@@ -30,6 +30,11 @@ class User implements UserInterface,\Serializable
     private $surname;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastname;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $picture;
@@ -41,11 +46,6 @@ class User implements UserInterface,\Serializable
      * )
      */
     private $password;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $creation_date;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -81,6 +81,18 @@ class User implements UserInterface,\Serializable
         return $this;
     }
 
+    public function getLastname(): ?string
+    {
+        return $this->Lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
     public function getPicture(): ?string
     {
         return $this->picture;
@@ -105,18 +117,6 @@ class User implements UserInterface,\Serializable
         return $this;
     }
 
-    public function getCreationDate(): ?\DateTimeInterface
-    {
-        return $this->creation_date;
-    }
-
-    public function setCreationDate(\DateTimeInterface $creation_date): self
-    {
-        $this->creation_date = $creation_date;
-
-        return $this;
-    }
-
     public function getRole(): ?string
     {
         return $this->role;
@@ -132,7 +132,9 @@ class User implements UserInterface,\Serializable
 
     // implements UserInterface
     public function getRoles(){
-        return $this->getRole();
+        $array = [];
+        $array[] = $this->getRole();
+        return $array;
     }
 
     public function getSalt(){
@@ -145,15 +147,14 @@ class User implements UserInterface,\Serializable
 
     // implements Serializable
     public function serialize(){
-        return $this->serialize([
+        return serialize([
             $this->id,
             $this->username,
-            $this->name,
             $this->surname,
+            $this->lastname,
             $this->picture,
             $this->password,
             $this->role,
-            $this->creation_date
         ]);
     }
 
@@ -161,12 +162,11 @@ class User implements UserInterface,\Serializable
         list (
             $this->id,
             $this->username,
-            $this->name,
             $this->surname,
+            $this->lastname,
             $this->picture,
             $this->password,
             $this->role,
-            $this->creation_date
         ) = unserialize($serialized, ['allowed_classes' => false]);
     }
 }
